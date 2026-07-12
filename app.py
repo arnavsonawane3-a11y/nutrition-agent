@@ -115,7 +115,7 @@ def get_model():
         credentials = Credentials(url=IBM_URL, api_key=IBM_API_KEY)
         client      = APIClient(credentials)
         _model = ModelInference(
-            model_id="ibm/granite-13b-instruct-v2",
+            model_id="ibm/granite-4-h-small",
             api_client=client,
             project_id=IBM_PROJECT_ID,
             params={
