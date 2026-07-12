@@ -37,10 +37,10 @@
         .prose-custom ol { list-style-type: decimal; margin-left: 20px; margin-bottom: 8px; }
     </style>
 </head>
-<body class="min-h-screen flex flex-col antialiased">
+<body class="h-screen w-screen overflow-hidden flex flex-col antialiased">
 
     <!-- Header / Navigation -->
-    <header class="border-b border-base px-6 py-4 flex items-center justify-between bg-black sticky top-0 z-50">
+    <header class="border-b border-base px-6 py-4 flex items-center justify-between bg-black flex-shrink-0 z-50">
         <div class="flex items-center space-x-3">
             <div class="h-8 w-8 rounded bg-white flex items-center justify-center text-black font-bold tracking-tighter text-sm">
                 NB
@@ -60,10 +60,10 @@
     </header>
 
     <!-- Main Workspace Layout -->
-    <main class="flex-1 grid grid-cols-1 lg:grid-cols-12 overflow-hidden h-[calc(100vh-69px)]">
+    <main class="flex-1 grid grid-cols-1 lg:grid-cols-12 overflow-hidden">
         
         <!-- Left Panel: Profile & Toolsets (Scrollable) -->
-        <div class="lg:col-span-4 border-r border-base p-6 space-y-6 overflow-y-auto bg-black">
+        <div class="lg:col-span-4 border-r border-base p-6 space-y-6 overflow-y-auto bg-black h-full">
             
             <!-- Component 1: User Profile -->
             <section class="bg-card border border-base rounded-lg p-5">
@@ -185,9 +185,9 @@
         </div>
 
         <!-- Right Panel: Core AI Terminal (Chat View) -->
-        <div class="lg:col-span-8 flex flex-col h-full bg-black">
-            <!-- Chat Logs Container -->
-            <div id="chat-logs" class="flex-1 overflow-y-auto p-6 space-y-6">
+        <div class="lg:col-span-8 flex flex-col h-full bg-black overflow-hidden">
+            <!-- Pinned Scrollable Chat Container (The Chat Slider Viewport) -->
+            <div id="chat-logs" class="flex-1 overflow-y-auto p-6 space-y-6 min-h-0">
                 <!-- Welcome Introduction -->
                 <div class="max-w-2xl mx-auto border border-base bg-card rounded-lg p-6 space-y-3">
                     <h3 class="text-sm font-semibold text-white tracking-wide">Initialization Complete</h3>
@@ -195,13 +195,13 @@
                         Welcome, I am <span class="text-white font-medium">NutriBot</span>, your dedicated AI nutrition context companion. I specialize in parsing South Asian & Indian dietary structures, custom macro targets, and regional variations.
                     </p>
                     <div class="text-[11px] text-neutral-500 font-mono bg-black p-2.5 rounded border border-base">
-                        ⚡ Connected to Granite-13B Model Inference Pipeline via IBM Cloud.
+                        ⚡ Connected to Granite-4-1B-Small Model Inference Pipeline via IBM Cloud.
                     </div>
                 </div>
             </div>
 
-            <!-- Chat Form Bar -->
-            <div class="p-6 border-t border-base bg-black">
+            <!-- Fixed Input Bar Area (Stays anchored at the bottom of the container) -->
+            <div class="p-6 border-t border-base bg-black flex-shrink-0">
                 <form id="chat-form" class="max-w-3xl mx-auto flex items-center space-x-2 bg-card border border-base rounded-lg p-2 focus-within:border-neutral-500 transition" onsubmit="dispatchChatMessage(event)">
                     <input type="text" id="chat-input" autocomplete="off" placeholder="Ask NutriBot anything about your nutrition goals..." class="flex-1 bg-transparent text-sm text-white px-3 py-2 focus:outline-none">
                     <button type="submit" class="bg-white hover:bg-neutral-200 text-black h-9 w-9 rounded flex items-center justify-center transition flex-shrink-0">
